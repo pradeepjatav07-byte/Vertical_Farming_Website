@@ -1,0 +1,1791 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        :root{
+  --dark:      #0C1710;
+  --dark2:     #122117;
+  --ink:       #15211A;
+  --muted:     #5E6C60;
+  --muted-d:   #9AA79B;
+  --paper:     #F5F8F2;
+  --card:      #FFFFFF;
+  --green:     #2F6B40;
+  --leaf:      #5FA96A;
+  --green-soft:#E4EFE1;
+  --amber:     #E9A13B;
+  --amber-soft:#FBEED7;
+  --line:      #DCE5DA;
+  --line-d:    #24382B;
+  --radius:    16px;
+  --shadow:    0 10px 30px rgba(21,33,26,.08);
+  --shadow-lg: 0 24px 60px rgba(12,23,16,.22);
+  --font: "Segoe UI", "Helvetica Neue", Arial, system-ui, sans-serif;
+}
+        html {
+            scroll-behavior: smooth;
+            scroll-padding-top: 90px;
+        }
+        *{
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body{
+            font-family: "Segoe UI", "Helvetica Neue", Arial, sans-serif;
+            height: 100vh;
+            width: 100%;
+            /* background-image:url(hero.jpg) */
+            
+        }
+        #H1{
+            font-size: 70px;
+            color: white;
+        }
+        nav{
+            background-color: #0C1710;
+            height: 70px;
+            width: 100%;
+            color: #DCE5DA;
+            display: flex;
+            align-items: center;
+            justify-content: space-around;
+            position: fixed;
+            top: 0;
+            z-index: 1000;
+        }
+        #b1{
+           background-color: #E9A13B;
+           height: 40px;
+           font-size: 15px;
+           color: #0C1710;
+           font-weight: bold;
+           padding: 10px;
+           border-radius: 30px;
+          
+        } 
+        .hero{
+            /* height: 73vh; */
+             min-height: 100vh;
+            /* width: 100%; */
+            /* background-image: url(hero.jpg); */
+            background-size: cover;
+            background-position: center;
+            background-image:linear-gradient(180deg, rgba(12,23,16,.8), rgba(12,23,16,.4) 45%, rgba(12,23,16,.9)), url(hero.jpg);
+            color: #DCE5DA;
+            padding: 130px 6vw 80px;
+            border: 2px solid white;
+        }
+        ul{
+            display: flex;
+            /* gap:5%; */
+            width: 60%;
+            align-items: center;
+            list-style: none;
+            /* border:1px solid white; */
+            justify-content: space-between;
+            
+            /* margin-left: 40% */
+        }
+        nav a {
+            color: #DCE5DA;
+            text-decoration: none;
+            transition: color .2s;
+        }
+
+        nav a:hover {
+            color: #E9A13B;
+        }
+
+        #b1 {
+            display: inline-flex;
+            align-items: center;
+            text-decoration: none;
+        }
+        /* li{
+            display: flex;
+            align-items: center;
+            flex-direction: column;
+            
+        } */
+         .kicker{
+            font-size: 12px;
+            font-weight: bold;
+            letter-spacing: 3px;
+            color: #E9A13B;
+            text-transform: uppercase;
+         }
+         .button{
+            height: 5%;
+            width: 30%;
+            /* border: 1px solid white; */
+            padding: 25px 25px 25px 0 ;
+            gap: 20px; 
+            display: flex;
+            justify-content: space-evenly;
+            align-items: center;
+            text-align: center;
+            font-weight: bold;
+
+         }
+         .herob1{
+            height: 80%;
+            width: 50%;
+            padding: 10px;
+            border-radius: 30px;
+            background-color: #E9A13B;
+            color:black;
+            text-decoration: none;
+            text-align: center;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            /* white-space: nowrap; */
+         }
+        .herob2{
+            height: 80%;
+            width: 50%;
+            padding: 10px;
+            border-radius: 30px;
+            border: 1px solid  #9AA79B;
+            color: white;
+            text-decoration: none; 
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            /* white-space: nowrap; */
+        }
+        .con{
+            height: 45%;
+            width: 80%;
+            /* border: 1px solid white; */
+            display: flex;
+            /* justify-content: center; */
+            /* justify-content: space-evenly; */
+            margin-top: 3%;
+            gap: 20px;
+        }
+         .box{
+            height: 28%;
+            width: 20%;
+            border: 1px solid wheat;
+            border-radius: 20px;
+            padding-left: 0;
+            padding: 20px 25px 20px 25px ;
+            color: #E9A13B;
+            background-color: rgba(255,255,255,.1);
+         }
+         .box p{
+            color: #DCE5DA;
+         }
+         .marquee{
+            height: 7%;
+            width: 100%;
+            font-size: 13px;
+            border-top: 1px solid #24382B;
+            border-bottom: 1px solid #24382B;
+            position: absolute;
+            left: 0;
+            bottom: 0;
+            overflow: hidden;
+            display: flex;
+            /* justify-content: center; */
+            align-items: center;  
+            padding: 15px 0;
+         }
+         .marq-track{
+            display: flex;
+            width: max-content;
+            animation: tick 32s linear infinite;
+            flex-shrink: 0;
+            white-space: nowrap;
+         }
+        .marq{
+            color: #E9A13B;
+            font-weight:700;
+            letter-spacing: .18em;
+            /* white-space: nowrap; */
+            padding: 0 26px;
+         }
+         @keyframes tick{
+            to{
+                transform: translateX(-50%);
+            }
+         }
+         .section1{
+            height: 150vh;
+            width: 100%;
+            /* border: 1px solid black; */
+            padding: 7% 7% 7% 7% ;
+            background-color:#E4EFE1 ;
+            line-height: 175%;
+            display: flex;
+            box-sizing: border-box; 
+         }
+         .s1boxleft{
+            height: 115vh;
+            width: 50%;
+            /* border: 1px solid black; */
+         }
+         .s1pb{
+            font-weight: bold;
+         }
+         .s1image{
+            margin-top: 2%;
+            height: 40vh;
+            width: 95%;
+            border: 1px solid black;
+            border-radius: 20px;
+            background-image: url(harvest.jpg);
+            background-size: cover;
+            /* position: relative; */
+         }
+         .s1card1{
+            height: 13vh;
+            width: 16%;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 20px;
+            position: absolute;
+            background-color: rgba(20, 30, 25, 0.95);
+            padding: 15px 10px 0 20px;
+            bottom: -125%;
+            left: 6%;
+            animation-name: card;
+            animation-duration: 3s;
+            animation-iteration-count: infinite;
+         }
+         @keyframes card{
+            0%{
+                transform: translate(0);
+            }
+            50%{
+                transform: translate(0,10px);
+            }
+             100%{
+                transform: translate(0);
+            }
+         }
+         .s1boxright{
+            height: 90vh;
+            width: 50%;
+            border: 1px solid black;
+            border-radius: 20px;
+            padding: 25px;
+            background-color: #F5F8F2;
+         }
+         .s1diagram{
+            height: 75vh;
+            width: 100%;
+            border: 1px solid black;
+            border-radius: 20px;
+            background-image: url(diagram.png);
+            background-size: cover;
+         }
+         .s1button{
+            height: 20vh;
+            width:100%;
+            /* border: 1px solid black; */
+            display: flex;
+            /* justify-content: space-between; */
+            /* align-items: center; */
+            column-gap: 5%;
+            padding-top: 50px;
+            margin-top: 20px;
+            flex-wrap: wrap;
+         }
+         .s1b1{
+            height: 5vh;
+            width: 40%;
+            border: 1px solid #DCE5DA;
+            border-radius: 30px;
+            background-color:white;
+            display: flex;
+            align-items: center;
+            font-size: 13px;
+            color: #2F6B40;
+            font-weight: 600;
+            box-shadow: 0 10px 30px rgba(21,33,26,.08);
+            padding: 8px 14px;
+         }
+         .section2{
+            /* height: 100vh; */
+            width: 100%;
+            border: 1px solid black;
+         }
+         .section123{
+            /* height: 300vh; */
+            /* background-repeat: no-repeat; */
+            background-size: cover;
+            background-image:linear-gradient(180deg, rgba(12,23,16,.8), rgba(12,23,16,.4) 45%, rgba(12,23,16,.9)), url(corridor.jpg);
+            /* padding-bottom: 70px; */
+         }
+         .section2{
+            min-height: 30vh;
+            width: 100%;
+            border: 1px solid white;
+            padding: 130px 6vw 80px;
+         }
+         .section3{
+            /* height: 100vh; */
+            min-height: 100vh;
+            border: 1px solid white;
+            /* background-color:#E4EFE1; */
+            padding: 7% 7% 7% 7% ;
+            background-color:white ;
+            line-height: 175%;
+         }
+         .s3boxes{
+            height: 60vh;
+            width: 100%;
+            /* border: 1px solid black; */
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+         }
+         .s3box{
+            height: 50vh;
+            width: 24%;
+            border: 1px solid  #DCE5DA;;
+            background-color: #F5F8F2;
+            border-radius: 20px;
+            /* padding: 15px; */
+            transition: transform .25s ease, box-shadow .25s ease;
+            box-shadow: 0 10px 30px rgba(21,33,26,.08);
+         }
+         .s3box-img{
+            height: 20vh;
+            /* background-image: url(hydro.jpg);
+            background-size: cover; */
+            overflow: hidden;
+            border-top-left-radius: 20px;
+            border-top-right-radius: 20px;
+            position: relative;
+            transition: transform .55s ease;
+         }
+         .s3ph{
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            /* background-image: url(hydro.jpg); */
+            background-size: cover;
+            transition: transform .55s ease;
+            }
+         /* .s3box-img:hover .s3ph{
+         transform: scale(1.07);
+         } */
+          .s3box:hover .s3ph{
+             transform: scale(1.07); 
+         }
+         .s3badge{
+            position: absolute;
+            bottom: 12px;
+            left: 12px;
+            color: #E4EFE1;
+            font-weight: bolder;
+            font-size: 13px;
+            border-radius: 30px;
+            background-color: #0C1710;
+            padding: 4px 8px;
+         }
+         .s3box svg{
+            width: 34px;
+            height: 34px;
+            margin: 20px 0 0px 20px;
+        }
+         .s3box h3{
+            color: #15211A;
+            font-weight: 900;
+            padding: 0 20px 0 ;
+            }
+         .s3box p{
+            font-size: 15px;
+            color: #5E6C60;
+            padding: 8px 20px 22px;
+            }
+        .s3box:hover{
+         transform: translateY(-6px);
+         box-shadow: 0 24px 60px rgba(12,23,16,.22);
+        }
+        .s3note{
+            /* margin-top: 2px; */
+            background-color: #E4EFE1;
+            border-left: 4px solid #2F6B40;
+            border-radius: 0 10px 10px 0;
+            padding: 14px 18px;
+            font-size: 15px;
+        }
+        .s3note b{
+            color: #2F6B40;
+        }
+        .section4{
+            background-color:  #0C1710;
+            color: #FFFFFF;
+            padding: 7%;
+        }
+        .s4timeline{
+            position: relative;
+            margin-top: 56px;
+        }
+        .s4line{
+            position: absolute;
+            left: 35px;
+            top: 10px;
+            bottom: 10px;
+            width: 2.5px;
+            background: linear-gradient(180deg, #5FA96A, #E9A13B);
+            opacity: .5;
+        }
+        .s4step{
+            display: flex;
+            gap: 26px;
+            padding: 20px 0;
+        }
+        .s4num{
+            height: 72px;
+            width: 72px;
+            border-radius: 50%;
+            background-color: #122117;
+            border: 2px solid #24382B;
+            color: #E9A13B;
+            font-size: 21px;
+            font-weight: 800;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-shrink: 0;
+            position: relative;
+            z-index: 1;
+        }
+        .s4body h3{
+            font-size: 18px;
+            font-weight: 800;
+            color: #FFFFFF;
+            margin-bottom: 8px;
+        }
+        .s4body p{
+            font-size: 15px;
+            max-width: 640px;
+            color: #9AA79B;
+        }
+        .s4body .s4meta{
+            color: #5FA96A;
+            font-size: 12px;
+            font-weight: 700;
+            letter-spacing: .08em;
+            text-transform: uppercase;
+            margin-top: 8px;
+        }
+        .s4field{
+            margin-top: 54px;
+            position: relative;
+            border-radius: 16px;
+            overflow: hidden;
+            box-shadow: 0 24px 60px rgba(12,23,16,.22);
+        }
+        .s4field img{
+            width: 100%;
+            aspect-ratio: 21/8;
+            object-fit: cover;
+            display: block;
+        }
+        figcaption{
+            position: absolute;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            padding: 40px 28px 18px;
+            background: linear-gradient(0deg,rgba(12,23,16,.9) transparent);
+            font-size: 14px;
+            color: #C8D2C6;
+        }
+        figcaption b{
+            color: #E9A13B;
+        }
+        .section5{
+            background-color: #F5F8F2;
+            color: #0C1710;
+            padding: 7%;
+        }
+        .s5grid{
+            display: grid;
+            grid-template-columns: .9fr 1.1fr;
+            gap: 48px;
+            align-items: center;
+            margin-top: 40px
+        }
+        .s5video{
+            position: relative;
+            aspect-ratio: 16/9;
+            border-radius: 20px;
+            overflow: hidden;    
+            background-color: #0C1710;
+            box-shadow: 0 24px 60px rgba(12,23,16,.18);
+        }
+        .s5video iframe{
+            position: absolute;
+            inset: 0;
+            width: 100%;
+            height: 100%;
+            border: 0;
+        }
+        .s5text p{
+            font-size: 15px;
+            line-height: 1.7;
+            color: #5E6C60;
+            max-width: 480px;
+        }
+        .s5chapters{
+            list-style: none;
+            padding: 0;
+            margin-top: 24px;
+            display: block;
+        }
+        .s5chapters li{
+            display: flex;
+            gap: 10px;
+            padding: 7px 0;
+            font-size: 14px;
+            color: #5E6C60;
+        }
+        .s5chapters li b{
+            color: #0C1710;
+            font-weight: 700;
+            flex-shrink: 0;
+        }
+        .s5text .kicker{
+            font-size: 12px;
+            font-weight: bold;
+            letter-spacing: 3px;
+            color: #E9A13B;
+            text-transform: uppercase;
+         }
+         .s5caption{
+            display: flex;
+            justify-content: space-between;
+            gap: 12px;
+            margin-top: 12px;
+            font-size: 13px;
+            color: #5E6C60;
+            flex-wrap: wrap;
+        }
+        .s5caption a{
+            color:  #2F6B40;
+            font-weight: 700;
+            text-decoration: none;
+        }
+        .s5caption a:hover{
+            text-decoration: underline;
+        }
+        .section6{
+            background:linear-gradient(rgba(10,18,13,.9), rgba(10,18,13,.9)),url("images/corridor.jpg") center 78% / cover no-repeat;
+            color: #FFFFFF;
+            padding: 7%;
+        }
+        .s6lede{
+            font-size: 15px;
+            line-height: 1.7;
+            color: #AEBBAF;
+            max-width: 520px;
+        }
+        .s6grid{
+            display: grid;
+            grid-template-columns: repeat(4,1fr);
+            gap: 16px;
+            margin-top: 48px;
+        }
+        .s6card{
+            background: rgba(255, 255, 255,.06);
+            backdrop-filter: blur(12px);
+            border: 1px solid rgba(255,255,255,.15);
+            border-radius: 20px;
+            padding: 28px 24px;
+            position: relative;
+            overflow: hidden;
+        }
+        .s6line{
+            position: absolute;
+            left: 0;
+            top: 0;
+            bottom: 0;
+            width: 4px;
+            background: linear-gradient(180deg, #5FA96A, #E9A13B);
+        }
+        .s6num{
+            font-size: 42px;
+            font-weight: 800;
+            color: #FFFFFF;
+            line-height: 1;
+            letter-spacing: -1px;
+        }
+        .s6card p{
+            margin-top: 12px;
+            font-size: 13.5px;
+            line-height: 1.6;
+            color: #B9C4B8;
+        }
+        .s6uptext{
+            display: block;
+            margin-top: 14px;
+            font-size: 10.5px;
+            font-weight:700;
+            letter-spacing: .06em;
+            text-transform: uppercase;
+            color: #9AA79B;
+        }
+        .section7{
+            background-color: #FFFFFF;
+            color: #0C1710;
+            padding: 7%;
+        }
+        .s7lede{
+            font-size: 15px;
+            line-height: 1.7;
+            color: #5E6C60;
+            max-width: 520px;
+        }
+        .s7grid{
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 18px;
+            margin-top: 46px;
+        }
+        .s7card{
+            border: 1px solid #DCE5DA;
+            border-radius: 20px;
+            overflow: hidden;
+            background: #F5F8F2;
+            transition: transform .2s, box-shadow .2s;
+            display: flex;
+            flex-direction: column;
+        }
+        .s7card:hover{
+            transform: translateY(-4px);
+            box-shadow: 0 24px 60px rgba(12,23,16,.9);
+        }
+        .s7img{
+            aspect-ratio: 16/7;
+            overflow: hidden;
+        }
+        .s7img img{
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            display: block;
+            transition: transform .55s ease;
+        }
+        .s7card:hover .s7img img{
+            transform: scale(1.05);
+        }
+        .s7inner{
+            display: grid;
+            padding: 24px;
+            grid-template-columns: auto 1fr;
+            gap: 16px;
+            align-items: start;
+        }
+        .s7yr{
+            font-size: 16px;
+            font-weight: 800;
+            color: #0C1710;
+            background: #FBEED7;
+            border-radius: 10px;
+            padding: 10px 12px;
+            text-align: center;
+            line-height: 1.15;
+        }
+        .s7yr small{
+            display: block;
+            font-size: 10px;
+            letter-spacing: .12em;
+            color: #9A6414;
+            font-weight: 700;
+        }
+        .s7loc{
+            font-size: 12px;
+            font-weight: 700;
+            letter-spacing: .1em;
+            text-transform:  uppercase;
+            color: #2F6B40;
+            margin-bottom: 8px;
+            display: block;
+        }
+        .s7card h3{
+            font-size: 17px;
+            font-weight: 800;
+            margin-bottom: 6px;
+        }
+        .s7card p{
+            font-size: 14px;
+            line-height: 1.6;
+            color: #5E6C60;
+        }
+        .s7policy {
+            background: #0C1710;
+            border: none;
+        }
+        .s7policy .s7loc{
+            color: #5FA96A;
+        }
+        .s7policy h3{
+            color: #FFFFFF;
+        }
+        .s7policy p {
+            color: #9AA79B;
+        }
+        .section8{
+            background:#F5F8F2;
+            color: #0C1710;
+            padding: 7% 6vw;
+        }
+        .s8lede {
+            font-size: 15px;
+            color: #5E6C60;
+            max-width: 520px;
+            line-height: 1.6;
+        }
+        .s8grid{
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 18px;
+            margin-top: 46px;
+        }
+        .s8left{
+            background: #FFFFFF;
+            border: 1px solid #DCE5DA;
+            border-radius: 20px;
+            padding: 28px;
+            box-shadow: 0 10px 30px rgba(21,33,26,.08);
+        }
+        .s8left ul{
+            width: 100%;
+            list-style: none;
+            margin: 0;
+            padding: 0;
+            display: block;
+        }
+        .s8left h3{
+            font-size: 17px;
+            font-weight: 800;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            margin-bottom: 16px;
+        }
+        .s8dot{
+            width: 10px;
+            height: 10px;
+            border-radius: 50%;
+            display: inline-block;
+            background: #5FA96A;
+        }
+        .s8left li{
+            width: 100%;
+            padding: 9px 0;
+            border-bottom: 1px dashed #DCE5DA;
+            font-size: 14px;
+            color: #5E6C60;
+            display: flex;
+            gap: 10px;
+        }
+        .s8left li:last-child{
+            border-bottom: none;
+        }
+        .s8left li b{
+            color: #0C1710;
+            flex-shrink: 0;
+            width: 95px;
+        }
+        .s8right{
+            background: #FFFFFF;
+            border: 1px solid #DCE5DA;
+            border-radius: 20px;
+            padding: 28px;
+            box-shadow: 0 10px 30px rgba(21,33,26,.08);
+        }
+        .s8right ul{
+            width: 100%;
+            list-style: none;
+            margin: 0;
+            padding: 0;
+            display: block;
+        }
+        .s8right h3{
+            font-size: 17px;
+            font-weight: 800;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            margin-bottom: 16px;
+        }
+        .s8right .s8dot{
+            width: 10px;
+            height: 10px;
+            border-radius: 50%;
+            display: inline-block;
+            background: #E9A13B;
+        }
+        .s8right li{
+            width: 100%;
+            padding: 9px 0;
+            border-bottom: 1px dashed #DCE5DA;
+            font-size: 14px;
+            color: #5E6C60;
+            display: flex;
+            gap: 10px;
+        }
+        .s8right li:last-child{
+            border-bottom: none;
+        }
+        .s8right li b{
+            color: #9A6414;
+            flex-shrink: 0;
+            width: 95px;
+        }
+        .s8table{
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 18px;
+            background: #FFFFFF;
+            border-radius: 20px;
+            overflow: hidden;
+            box-shadow: 0 10px 30px rgba(21,33,26,.08);
+        }
+        .s8table th, .s8table td{
+            padding: 13px 16px;
+            text-align: left;
+            border-bottom: 1px solid #DCE5DA;
+            vertical-align: top;
+        }
+        .s8table thead th{
+            background: #0C1710;
+            color: #FFFFFF;
+            font-size: 12px;
+            letter-spacing: .12em;
+            text-transform: uppercase;
+        }
+        .s8table caption {
+            padding: 0 0 16px 16px;
+        }
+        .s8table thead th:nth-child(3) {
+            color: #E9A13B;
+        }
+
+        .s8table td:nth-child(3) {
+            color: #2F6B40;
+            font-weight: 600;
+        }
+        .s8india{
+            background: #0C1710;
+            margin-top: 18px;
+            color: #FFFFFF;
+            border-radius: 20px;
+            overflow: hidden;
+            display: grid;
+            grid-template-columns: 1.15fr 0.85fr;
+        }
+        .s8india-txt{
+            padding: 30px 32px;
+            display: flex;
+            gap: 18px;
+            align-items: flex-start;
+        }
+        .s8flag{
+            flex-shrink: 0;
+            margin-top: 4px;
+        }
+        .s8india h3{
+            font-size: 17px;
+            font-weight: 800;
+            color: #E9A13B;
+            margin-bottom: 8px;
+        }
+        .s8india p{
+            font-size: 14px;
+            line-height: 1.6;
+            color: #9AA79B;
+        }
+        .s8india p b{
+            color: #FFFFFF;
+        }
+        .s8india-img{
+            position: relative;
+            min-height: 240px;
+        }
+        .s8india-img img{
+            position: absolute;
+            inset: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+        .s8india-img::after{
+            content: "Rooftop farming, golden hour - india";
+            position: absolute;
+            left: 14px;
+            bottom: 12px;
+            font-size: 12px;
+            letter-spacing: .06em;
+            color: #E6EBE2;
+            background: rgba(12,23,16,.72);
+            padding: 5px 10px;
+            border-radius: 30px;
+        }
+        .section9{
+            background: #122117;
+            color: #FFFFFF;
+            padding: 7% 6vw;
+        
+        }
+        .s9lede{
+            font-size: 15px;
+            color: #9AA79B;
+            max-width: 520px;
+            line-height: 1.6;
+        }
+        .shelf{
+            width: 120px;
+            height: 8px;
+            position: relative;
+            margin-top: 22px;
+        }
+        .shelf::before{
+            content: "";
+            position: absolute;
+            left: 0;
+            right: 0;
+            top: 3px;
+            height: 2px;
+            background: #24382B;
+        }
+        .shelf::after{
+            content: "";
+            position: absolute;
+            right: 0;
+            top: 0;
+            width: 8px;
+            height: 8px;
+            border-radius: 50%;
+            background:#E9A13B;
+        }
+        .s9grid{
+            width: 100%;
+            list-style: none;
+            padding: 0;
+            margin-top: 44px;
+            max-width: 1250px;  
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 20px;
+            align-items: stretch;
+        }
+        .s9grid li{
+            width: 100%;
+            display: grid;
+            grid-template-columns: 44px 1fr;
+            gap: 16px;
+            align-items: start;
+            background: rgba(255, 255, 255,.04);
+            border: 1px solid #24382B;
+            border-radius: 14px;
+            padding: 20px;
+            transition: border-color .2s transform .2s;
+        }
+        .s9grid li:hover{
+            border-color: #5FA96A;
+            transform: translateY(-3px);
+        }
+        .s9num {
+            font-size: 17px;
+            color: #E9A13B;
+            font-weight: 800;
+        }
+        .s9grid b{
+            display: block;
+            margin-bottom: 2px;
+        }
+        .s9grid p{
+            font-size: 14px;
+            color: #9AA79B;
+            line-height: 1.6;
+        }
+        .section10{
+            background: radial-gradient(800px 400px at 50% 50%, rgba(12, 23, 16, .84), rgba(12, 23, 16, .95)), url(images/corridor.jpg) center / cover no-repeat;
+            padding: 110px 6vw;
+            text-align: center;
+            color: #FFFFFF;
+        }
+        .s10lede{
+            color: #C8D2C6;
+            max-width: 520px;
+            margin: 16px auto 34px;
+        }
+        .s10btn{
+            display: inline-block;
+            background: #E9A13B;
+            color: #0C1710;
+            font-weight:700;
+            padding: 14px 28px;
+            border-radius: 30px;
+            text-decoration: none;
+        }
+        .section11{
+            background: #FFFFFF;
+            color: #0C1710;
+            padding: 7% 6vw;
+        }
+        .s11lede{
+            font-size: 15px;
+            color: #5E6C60;
+            min-width: 520px;
+            line-height: 1.6;
+        }
+        .s11grid{
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 48px;
+            margin-top: 44px;
+            align-items: start;
+        }
+        .s11info p{
+            font-size: 15px;
+            color: #5E6C60;
+            line-height: 1.6;
+            margin-bottom: 16px;
+        }
+        .s11line{
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            font-size: 14px;
+            font-weight: 700;
+            padding: 8px 0;
+        }
+        .s11line .k{
+            color: #5E6C60;
+            font-weight:500;
+            width: 110px;
+            flex-shrink: 0;
+        }
+        .s11form{
+            background: #F5F8F2;
+            border: 1px solid #DCE5DA;
+            border-radius: 20px;
+            padding: 30px;
+        }
+        .s11field{
+            margin-bottom: 18px;
+        }
+        .s11field label{
+            display: block;
+            font-size: 12px;
+            font-weight: 700;
+            letter-spacing: .06em;
+            text-transform: uppercase;
+            color: #5E6C60;
+            margin-bottom: 7px;
+        }
+        .s11field input, .s11field textarea{
+            width: 100%;
+            box-sizing: border-box;
+            font-family: inherit;
+            font: size 14px;;
+            color: #0C1710;
+            background: #FFFFFF;
+            border: 1.5px solid #DCE5DA;
+            border-radius: 10px;
+            padding: 12px 14px;
+            transition: border-color .2s, box-shadow .2s;
+        }
+        .s11field input:focus, .s11field textarea:focus{
+            outline: none;
+            border-color: #2F6B40;
+            box-shadow: 0 0 0 3px rgba(47,107,64,.14);
+        }
+        .s11btn{
+            width: 100%;
+            background: #E9A13B;
+            color: #0C1710;
+            font-size: 15px;
+            font-weight: 700;
+            padding: 14px;
+            border: none;
+            border-radius: 30px;
+            cursor: pointer;
+            display: block;
+        }
+        .s11ok{
+            background: #E4EFE1;
+            font-size: 14px;
+            font-weight:700;
+            text-align: center;
+            margin-top: 14px;
+            border: 1.5px solid #2F6B40;
+            color: #2F6B40;
+            border-radius: 30px;
+            padding: 14px 16px;
+            display: none;
+        }
+        .s11fine{
+            font-size: 12px;
+            color: #5E6C60;
+            text-align: center;
+            margin-top: 12px;
+        }
+        .footer{
+            background: #0C1710;
+            color: #9AA79B;
+            padding: 54px 6vw 34px;
+            border-top: 3px solid #E9A13B;
+        }
+        .fgrid{
+            display: grid;
+            grid-template-columns:1.4fr 1fr 1fr;
+            gap: 36px;
+        }
+        .fgrid h4{
+            font-size: 13px;
+            color: #FFFFFF;
+            letter-spacing: .14em;
+            text-transform: uppercase;
+            margin-bottom: 14px;
+        }
+        .fgrid p, .fgrid a{
+            font-size: 14px;
+        }
+        .fgrid ul{
+            list-style: none;
+            padding: 0;
+            width: 100%;
+            display: block;
+        }
+        .fgrid li{
+            padding: 4px 0;
+            width: 100%;
+        }
+        .fgrid a{
+            color: #9AA79B;
+            text-decoration: none;
+            transition: color .2s;         
+        }
+        .fgrid a:hover{
+            color: #E9A13B;
+        }
+        .fbrand p{
+            line-height: 1.6;
+            max-width: 380px;
+        }
+        .fbadge{
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+            margin-top: 14px;
+        }
+        .fbadge span{
+            font-size: 11px;
+            font-weight: 700;
+            letter-spacing: .08em;
+            border: 1px solid #24382B;
+            border-radius: 30px;
+            padding: 4px  10px;
+        }
+        .fcopy{
+            margin-top: 40px;
+            padding-top: 22px;
+            border-top: 1px solid #24382B;
+            display: flex;
+            justify-content: space-between;
+            gap: 12px;
+            flex-wrap: wrap;
+            font-size: 12.5px;
+        }
+        .fcopy a{
+            color: inherit;
+            text-decoration: none;
+            transition: color .2s;
+        }
+        .fcopy a:hover{
+            color: #E9A13B;
+        }
+        .fcopy b{
+            color: #FFFFFF;
+        }
+        .reveal {
+            opacity: 0;
+            transform: translateY(22px);
+            transition: opacity .7s ease, transform .7s ease;
+        }
+
+        .reveal.in {
+            opacity: 1;
+            transform: none;
+        }
+        .progress {
+            position: fixed;
+            top: 0;
+            left: 0;
+            height: 3px;
+            width: 0%;
+            background: #E9A13B;
+            z-index: 1000;
+        }
+    </style>
+</head>
+<body>
+    <div class="progress"></div>
+    <nav>
+        <span  style="display: flex; align-items: center; gap: 10px;">
+            <svg width="30" height="30" viewBox="0 0 32 32" aria-hidden="true">
+            <rect x="6"  y="20" width="20" height="4.4" rx="2.2" fill="#5FA96A"/>
+            <rect x="8"  y="13" width="16" height="4.4" rx="2.2" fill="#9CCB8F"/>
+            <rect x="10" y="6"  width="12" height="4.4" rx="2.2" fill="#E9A13B"/>
+            <path d="M16 6 C 16 2.8, 18.6 1.4, 20.6 1.6 C 20.4 4.2, 18.6 6, 16 6 Z" fill="#5FA96A"/>
+        </svg>
+        <span style="font-weight:900;">
+        STACKED<br><small style="font-size: 9px; color: #9AA79B; letter-spacing: 3px;">VERTICAL FARMING REPORT</small>
+        </span>
+        </span>
+        
+        <ul>
+            <li><a href="#about">Overview</a></li>
+            <li><a href="#methods">Methods</a></li>
+            <li><a href="#process">Process</a></li>
+            <li><a href="#watch">Watch</a></li>
+            <li><a href="#world">Real World</a></li>
+            <li><a href="#honest">Honest Part</a></li>
+            <li><a href="#contact" id="b1">Say Hello</a></li>
+        </ul>
+    </nav>
+    <div class="hero">
+        <p class="kicker">— A cinematic study in upward agriculture</p>
+        <h1 id="H1"> Grow up. <br><span style="color: #E9A13B;"> Not out.</span></h1>
+        <p>Vertical farming stacks crops in controlled indoor layers — up to <br> 95% less water, zero pesticides, 365 days of harvest a year. This is <br> how it works, where it's running, and where it honestly doesn't work <br> yet.</p>
+       <div class="button">
+         <a class="herob1" href="#about">Explore the system</a>
+        <a class="herob2" href="#watch">Watch it in action</a>
+       </div>
+         <div class="con">
+            <div class="box">
+                <h2>95%</h2>
+                <p>less water than field farming</p>
+            </div>
+            <div class="box">
+                <h2>365</h2>
+                <p>days of harvest a year</p>
+            </div>
+            <div class="box">
+                <h2>2-3x</h2>
+                <p>yield per m² of leafy greens</p>
+            </div>
+            <div class="box">
+                <h2>0</h2>
+                <p>pesticides in a sealed system</p>
+            </div>
+         </div>
+         <div class="marquee">
+           <div class="marq-track">
+             <h3><span class="marq">95% LESS WATER</span> ✦  365-DAY HARVEST  ✦ <span class="marq"> ZERO PESTICIDES</span>  ✦  10× YIELD PER AREA  ✦  <span class="marq">CLOSED-LOOP NUTRIENTS</span>  ✦  GROWN INSIDE CITIES  ✦ <span class="marq">95% LESS WATER</span> ✦  365-DAY HARVEST  ✦ <span class="marq"> ZERO PESTICIDES</span>  ✦  10× YIELD PER AREA  ✦  <span class="marq">CLOSED-LOOP NUTRIENTS</span>  ✦  GROWN INSIDE CITIES  ✦  
+            </h3>
+           </div>
+         </div>
+    </div>  
+   <div class="section123">
+
+     <div class="section1" id="about">
+           
+            <div class="s1boxleft">
+                 <p class="kicker">— Overview</p>
+                <h1 id="s1h" style="font-weight: bolder; font-size: 50px;line-height: 110%;"> What vertical farming actually is</h1>
+                <div class="shelf"></div>
+                <p class="s1p"> <br>Vertical farming is the practice of growing crops in <span class="s1pb">stacked layers</span> — often indoors <br>— inside a <span class="s1pb">controlled environment</span>: temperature, humidity, CO₂ and light are all <br> regulated by machines, and the crop never touches open-field weather.</p> <br>
+
+                <p class="s1p">Instead of spreading out across hectares, the farm <span class="s1pb">grows upward</span>. Crops are held <br> in shelves, towers or walls, fed by a <span class="s1pb">closed-loop nutrient system</span>: water drips <br> through, the plant drinks what it needs, and the rest is captured, filtered and <br> reused. The system runs on LED grow lights tuned to the spectrum the crop wants <br> — not on the sun. <br><br></p>
+
+                <p class="s1p">It sits inside a broader family called <span class="s1pb">CEA — Controlled Environment Agriculture</span> <br> — which also includes high-tech greenhouses. The defining trait of a vertical farm is <br> simple: <span  class="s1pb">the crop is decoupled from the climate.</span> <br><br></p>
+
+                <div class="s1image"></div>
+
+                <div class="s1card1">
+                    <h1 style="color: #E9A13B; font-size:large;">0.5 litres</h1>
+                    <p style="color: #E4EFE1; font-size: small; line-height: 130%;">…is all it takes to rotate Sky Greens' 1.7-tonne tower one full cycle. Gravity does the rest.</p>
+                </div>
+                <div class="s1button">
+                    <div class="s1b1">🌱 Best for leafy greens & herbs</div>
+                    <div class="s1b1">💧 Water recirculated, not poured</div>
+                    <div class="s1b1">🏙️ Fits inside cities</div>
+                </div>
+            </div>
+            <div class="s1boxright">
+                <div class="s1diagram"></div>
+                <p style="font-size: small; margin-left: 5px;margin-top: 15px; text-align: center;">Fig 1 — Anatomy of a vertical farming system. Nutrient water circulates in a closed loop; nothing is poured away.</p>
+            </div>
+    </div>
+    <div class="section2">
+        <h1 style="font-size: 50px; font-weight: 900; color: #DCE5DA;">“The farm is no longer a <span style="color: #E9A13B; font-size: 50px; font-weight: bolder;">place</span><div class="br"></div>It's a <span style="color: #E9A13B; font-size: 50px; font-weight: bolder;">building</span>.”</h1><br>
+        <p style="color:#9AA79B;">— the idea that turned agriculture into real estate</p>
+    </div>
+    <div class="section3" id="methods">
+         <p class="kicker">— Methods</p><br>
+        <h2 style="font-size: 45px; font-weight: 900;">How a crop grows without soil</h2><br>
+        <p style="color:#5E6C60; font-size: 18px;"> All vertical farms skip the ground, but they don't all skip it the same way. Four delivery <br>
+        systems you'll meet in the field — each trades cost, control and water use differently.</p> <br>
+        <div class="shelf"></div>
+        <div class="s3boxes">
+            <div class="s3box">
+                <div class="s3box-img">
+                   <div class="s3ph" style="background-image:url(hydro.jpg)"></div>
+                    <div class="s3badge">~70% less water than field</div>
+                </div>
+                   <svg viewBox="0 0 52 52" aria-hidden="true">
+                   <rect x="6" y="30" width="40" height="7" rx="3.5" fill="none" stroke="#2F6B40" stroke-width="2.4"/>
+                   <path d="M14 37 v 12 M32 37 v 12" stroke="#C4A26B" stroke-width="2" fill="none"/>
+                   <ellipse cx="14" cy="26" rx="7" ry="7" fill="#5FA96A"/><ellipse cx="32" cy="26" rx="7" ry="7" fill="#9FE08F"/>
+                   <circle cx="44" cy="20" r="3" fill="#E9A13B"/>
+                    </svg>
+                <h3>Hydroponics</h3>
+                <p>Roots float in a thin film or channel of nutrient-rich water. The most proven, lowest-risk method — the backbone of most commercial vertical farms.</p>
+            </div>
+            <div class="s3box">
+                <div class="s3box-img">
+                   <div class="s3ph" style="background-image:url(aero.jpg)"></div>
+                    <div class="s3badge">~70% less than hydro</div>
+                </div>
+                <svg viewBox="0 0 52 52" aria-hidden="true">
+                <path d="M26 44 v-10" stroke="#C4A26B" stroke-width="2.4"/>
+                <ellipse cx="26" cy="30" rx="8" ry="8" fill="#5FA96A"/>
+                <g fill="#7FB4D8"><circle cx="12" cy="18" r="2.4"/><circle cx="20" cy="10" r="2.4"/><circle cx="32" cy="10" r="2.4"/><circle cx="40" cy="18" r="2.4"/><circle cx="16" cy="28" r="2"/><circle cx="36" cy="28" r="2"/><circle cx="26" cy="6" r="2"/></g>
+                </svg>
+                <h3>Aeroponics</h3>
+                <p>Roots hang in a dark chamber and are misted with nutrient fog on a timer. Maximum oxygen to roots, minimum water — but the system is finicky when pumps fail.</p>
+            </div>
+            <div class="s3box">
+                <div class="s3box-img">
+                   <div class="s3ph" style="background-image:url(aqua.jpg)"></div>
+                    <div class="s3badge">Zero fertiliser input</div>
+                </div>
+                   <svg viewBox="0 0 52 52" aria-hidden="true">
+                    <path d="M8 34 q 14 8 28 0" stroke="#3E7C5B" stroke-width="2.4" fill="none"/>
+                    <path d="M30 30 q 6 -4 10 0 q -4 4 -10 0 Z" fill="#E9A13B"/>
+                    <path d="M16 30 v-8" stroke="#2F6B40" stroke-width="2.2"/>
+                    <path d="M16 22 C 16 16, 21 13, 24 14 C 23 19, 20 22, 16 22 Z" fill="#5FA96A"/>
+                   </svg>
+                <h3>Aquaponics</h3>
+                <p>Fish waste feeds the plants; the plants clean the water for the fish. A living closed loop with zero fertiliser — the trickiest to balance, the most poetic.</p>
+            </div>
+            <div class="s3box">
+                <div class="s3box-img">
+                   <div class="s3ph" style="background-image:url(substrate.jpg)"></div>
+                    <div class="s3badge">Best for beginners</div>
+                </div>
+                   <svg viewBox="0 0 52 52" aria-hidden="true">
+                    <path d="M12 26 h28 l-4 18 h-20 Z" fill="none" stroke="#2F6B40" stroke-width="2.4"/>
+                    <path d="M14 32 h24 M15 38 h22" stroke="#2F6B40" stroke-width="1.6" opacity="0.6"/>
+                    <path d="M26 26 v-9" stroke="#2F6B40" stroke-width="2.2"/>
+                    <path d="M26 17 C 26 11, 31 8, 34 9 C 33 14, 30 17, 26 17 Z" fill="#5FA96A"/>
+                   </svg>
+                <h3>Substrate (soil-less)</h3>
+                <p>Crops grow in inert media — coco coir, perlite, rockwool — that hold moisture while draining fast. The gentlest entry point: same logic as a good pot.</p>
+            </div>
+        </div>
+        <p class="s3note"><b>Water ladder:</b> field irrigation → hydroponics uses ~70% less water → aeroponics uses ~70% less than hydroponics. Multiply, and a vertical farm can recirculate up to 98% of the water it uses.</p>
+    </div>
+   </div>
+   <section class="section4" id="process">
+     <p class="kicker">— Process</p><br>
+     <h2 style="font-size: 45px; font-weight: 900; color: #FFFFFF;">One crop cycle, seed to shelf</h2><br>
+      <p style="color:#9AA79B; font-size: 18px;"> In a leafy-greens vertical farm, a full cycle takes 25–45 days. Here's the loop, end to end.</p> <br>
+      <div class="shelf"></div>
+      <div class="s4timeline">
+        <div class="s4line"></div>
+        <div class="s4step">
+            <div class="s4num">01</div>
+            <div class="s4body">
+                <h3>Seed & germination</h3>
+                <p>Seeds start in a propagator — a warm, humid, dark box at 22–25°C. In 3–7 days most lettuce and herb seeds break and send down their first root.</p>
+                 <p class="s4meta">Days 0–7 · Propagation room</p>
+            </div>
+        </div>
+        <div class="s4step">
+            <div class="s4num">02</div>
+            <div class="s4body">
+                <h3>Transplant to channels</h3>
+                <p>Seedlings move into net pots in the hydroponic channels — or mist chambers, for aeroponics. The nutrient solution's pH and EC are already dialed to the crop's spec.</p>
+                 <p class="s4meta">Day 7 · Rack & channel</p>
+            </div>
+        </div>
+        <div class="s4step">
+            <div class="s4num">03</div>
+            <div class="s4body">
+                <h3>Grow under LED</h3>
+                <p>The canopy lights run a 16–18 hour photoperiod, tuned to the red-blue spectrum the crop wants. Growth is a dial: more light hours, faster leaves — within reason.</p>
+                 <p class="s4meta">Days 7–35 · Growth room</p>
+            </div>
+        </div>
+        <div class="s4step">
+            <div class="s4num">04</div>
+            <div class="s4body">
+                <h3>Closed-loop feeding</h3>
+                <p>Nutrient water circulates continuously through the reservoir. Sensors log pH, EC and temperature every hour; the dosing system corrects drift before the crop ever feels it.</p>
+                 <p class="s4meta">Continuous · Sensors + auto-dosing</p>
+            </div>
+        </div>
+        <div class="s4step">
+            <div class="s4num">05</div>
+            <div class="s4body">
+                <h3>Harvest — and repeat</h3>
+                <p>Crop is cut, packed and sold while the next tray is transplanted the same day. A farm that never sleeps, never waits for a season, and reuses nearly all of its water.</p>
+                 <p class="s4meta">Day 25–45 · Ship out, restock in</p>
+            </div>
+        </div>
+      </div>
+      <figure class="s4field">
+        <img src="images/harvest.jpg" alt="Harvesting leafy greens from a vertical farm shelf">
+        <figcaption><b>Step 05 in practice.</b> Harvest here is a daily job, not a season — trays ship out while replacements go in, every single day of the year.</figcaption>
+      </figure>
+   </section>
+   <section class="section5" id="watch">
+        <div class="s5grid">
+            <div class="s5text">
+                <p class="kicker">—Watch it in action</p><br>
+                <h2 style="font-size: 45px; font-weight: 900; color: #0C1710;">See a real tower farm work</h2>
+                <div class="shelf"></div><br>
+                <p>Diagrams explain the system — a running farm explains the scale. This deep dive walks through AeroFarms' AI-driven towers: how 95% water savings is actually achieved, what energy costs do to the math, and where the technology is heading by 2030.</p>
+                <ul class="s5chapters">
+                    <li><b>0:00</b>Feeding a growing planet — the problem</li>
+                    <li><b>1:07</b>How AI cultivates the crop</li>
+                    <li><b>2:14</b> Weighing the costs — energy is the real price</li>
+                    <li><b>3:12</b> The road to 2030</li>
+                </ul>
+            </div>
+            <div class="s5right">
+            <div class="s5video"><iframe width="560" height="315" src="https://www.youtube.com/embed/szMdqmOQ63o?si=XoXZy9bSvsV6xrkQ" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+            </div>
+            <div class="s5caption"><span>▲ Vertical Farming Revolution — AI, water savings &amp; the 2030 outlook (chapters above)</span>
+                 <a href="https://www.youtube.com/watch?v=szMdqmOQ63o" target="_blank" rel="noopener">Open on YouTube ↗</a>
+            </div>
+            </div>
+        </div>
+   </section>
+   <section class="section6" id="numbers">
+    <p class="kicker">—The case</p><br>
+    <h2 style="font-size: 45px; font-weight: 900; color: #FFFFFF;">The argument, in numbers</h2>
+     <p class="s6lede">Figures drawn from published industry sources — the same numbers that show up in every credible study of this space.</p>
+     <div class="shelf"></div>
+     <div class="s6grid">
+         <div class="s6card">
+            <div class="s6line"></div>
+            <div class="s6num">95<span class="s6suffix" style="color: #E9A13B;">%</span></div>
+            <p>less water than conventional field farming, with up to 98% recirculated in closed loops.</p>
+            <span class="s6uptext">World Economic Forum · Infarm</span>
+         </div>
+         <div class="s6card">
+            <div class="s6line"></div>
+            <div class="s6num">365 <span class="s6suffix" style="color: #E9A13B;">days</span></div>
+            <p>of growing season, every year — weather, monsoon and frost are design inputs now.</p>
+            <span class="s6uptext">Controlled environment, by definition</span>
+         </div>
+         <div class="s6card">
+            <div class="s6line"></div>
+            <div class="s6num">10<span class="s6suffix" style="color: #E9A13B;">×</span></div>
+            <p>the yield-per-area claimed by Sky Greens (Singapore) versus soil farming on the same footprint.</p>
+            <span class="s6uptext">Sky Greens, est. 2012</span>
+         </div>
+         <div class="s6card">
+            <div class="s6line"></div>
+            <div class="s6num">$7<span class="s6suffix" style="color: #E9A13B;">B</span></div>
+            <p>global market size for vertical-farm produce in 2025 — projected to roughly double by 2035.</p>
+            <span class="s6uptext">Forbes, 2026</span>
+         </div>
+     </div>
+   </section>
+   <section class="section7" id="world">
+     <p class="kicker">—Real world</p><br>
+     <h2 style="font-size: 45px; font-weight: 900; color: #0C1710;">It's not a concept — it's running</h2>
+     <p class="s7lede">Four proof points from farms and policies that are live right now.</p>
+     <div class="shelf"></div>
+     <div class="s7grid">
+        <article class="s7card">
+            <div class="s7img">
+                <img src="images/singapore.jpg" alt="Vertical farm skyscraper in a city skyline at dusk">
+            </div>
+            <div class="s7inner">
+                <div class="s7yr">2012<small>SG</small></div>
+                <div><span class="s7loc">Singapore</span>
+                    <h3>Sky Greens</h3>
+                    <p>The world's first low-carbon, water-driven vertical farm. Gravity-powered A-frame towers rotate 1.7 tonnes of crops using just 0.5 litres of water per cycle — claiming 10× the yield of soil farms per area.</p>
+                </div>
+            </div>
+        </article>
+        <article class="s7card">
+             <div class="s7img">
+                <img src="images/infarm-cinematic.jpg" alt="Worker inspecting herbs inside an Infarm growing cabinet">
+             </div>
+            <div class="s7inner">
+                <div class="s7yr">2013<small>DE</small></div>
+                <div><span class="s7loc">Germany</span>
+                    <h3>Infarm</h3>
+                    <p>Modular growing cabinets installed inside supermarkets and restaurants across Europe. The company reports more than 205,000 m² of farmland saved and 95% less water versus traditional growing.</p>
+                </div>
+            </div>
+        </article>
+        <article class="s7card s7side">
+            <div class="s7inner">
+                <div class="s7yr">US<small>NJ</small></div>
+                <div><span class="s7loc">Newark, New Jersey</span>
+                    <h3>AeroFarms</h3>
+                    <p>One of the largest indoor vertical farms on Earth, running aeroponic towers inside a former steel mill — growing 2M+ lbs of greens a year without soil, sun or pesticides. Claims up to 390× the yield per square foot of conventional farming.</p>
+                </div>
+            </div>
+        </article>
+        <article class="s7card s7policy">
+            <div class="s7inner">
+                <div class="s7yr"">2030<small >GOV</small></div>
+                <div><span class="s7loc">Singapore Food Authority</span>
+                    <h3>"30 by 30"</h3>
+                    <p>A national target: produce 30% of the country's nutritional needs locally by 2030, up from under 10%. Vertical farming is the lead technology in the plan — policy chasing the farm, not the other way around.</p>
+                </div>
+            </div>
+        </article>
+     </div>
+   </section>
+   <section class="section8" id="honest">
+    <p class="kicker">—The honest part</p><br>
+    <h2 style="font-size: 45px; font-weight: 900; color: #0C1710;">Where it shines — and where it hurts</h2>
+    <p class="s8lede">Most write-ups stop at the benefits. A project that also names the problems is a project that actually understands the subject. Both columns are true at the same time.</p>
+    <div class="shelf"></div>
+    <div class="s8grid">
+        <div class="s8left">
+            <h3><span class="s8dot"></span>What works (and why it matters)</h3>
+            <ul>
+                <li><b>Water</b><span>90–95% less, recirculated in a closed loop — the strongest argument anywhere near a water-stressed region.</span></li>
+                <li><b>Land</b><span>90%+ smaller footprint for the same volume of leafy greens; farms can be built inside cities.</span></li>
+                <li><b>Consistency</b><span>Year-round supply with zero weather risk; every tray runs the same recipe, so quality is repeatable.</span></li>
+                <li><b>Chemistryr</b><span>Sealed systems need no pesticides and eliminate agricultural runoff.</span></li>
+            </ul>
+        </div>
+        <div class="s8right">
+            <h3><span class="s8dot"></span>What's hard (and what it costs)</h3>
+            <ul>
+                <li><b>Energy</b><span>LEDs, HVAC and pumps run 24/7. Energy is the single biggest operating cost — and the reason location + power mix decide if a farm is profitable.</span></li>
+                <li><b>Capital</b><span>Setting up a serious vertical farm costs 3–5× more per m² than a greenhouse. This is a capital-intensive business, not a weekend project.</span></li>
+                <li><b>Crop rangey</b><span>Fast, small, leafy crops (lettuce, basil, kale, mint) win. Fruits, grains and root vegetables still lose on economics.</span></li>
+                <li><b>Expertise</b><span>You're running biology, plumbing, HVAC and software at once. One pump failure can take out a chamber in hours.</span></li>
+            </ul>
+        </div>
+    </div>
+     <h3 style="margin: 15px 10px 10px 0;font-weight: 800;">Side by side: field farm vs vertical farm</h3>
+    <table class="s8table">
+        <thead>
+            <tr>
+                <th>Metric</th>
+                <th>Field Farming</th>
+                <th>Vertical Farming</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <th>Water</th>
+                <td>High — agriculture draws ~70% of the world's freshwater</td>
+                <td>90–95% less; up to 98% recirculated</td>
+            </tr>
+            <tr>
+                <th>Land</th>
+                <td>Hectares per crop, spread horizontally</td>
+                <td>90%+ smaller footprint, stacked upward</td>
+            </tr>
+            <tr>
+                <th>Pesticides</th>
+                <td>Routine use, with runoff risk</td>
+                <td>None — sealed, pest-free system</td>
+            </tr>
+            <tr>
+                <th>Season</th>
+                <td>Bound to weather and climate</td>
+                <td>365 days, fully controlled</td>
+            </tr>
+            <tr>
+                <th>Location</th>
+                <td>Only where arable land exists</td>
+                <td>Cities, rooftops, deserts, shipping containers</td>
+            </tr>
+            <tr>
+                <th>Energy</th>
+                <td>Low — sun does the heavy lifting</td>
+                <td>High — LEDs + HVAC, the real cost line</td>
+            </tr>
+        </tbody>
+    </table>
+    <div class="s8india">
+        <div class="s8india-txt">
+            <svg class="s8flag" width="40" height="40" viewBox="0 0 40 40" aria-hidden="true">
+                <rect x="4" y="6" width="32" height="7" rx="2" fill="#E9A13B"></rect>
+                <rect x="4" y="16.5" width="32" height="7" fill="#F5F8F2"></rect>
+                <rect x="4" y="27" width="32" height="7" rx="2" fill="#5FA96A"></rect>
+            </svg>
+            <div>
+                <h3>Why this hits differently in India</h3>
+                <p>Agriculture still draws the overwhelming majority of the country's freshwater, and <b>over 31% of Indians already live in cities — and climbing.</b> Industry estimates put a 10,000 sq ft vertical farm's saving at roughly <b>1.2 million gallons of water per year</b> versus an equivalent field. In water-stressed states like Rajasthan, that's not a niche — it's infrastructure thinking.</p>
+            </div>
+        </div>
+        <div class="s8india-img">
+            <img src="images/rooftop.jpg" alt="Rooftop vertical farm at golden hour with city skyline">
+        </div>
+    </div>
+   </section>
+   <section class="section9" id="outlook">
+        <p class="kicker">—Outlook</p><br>
+        <h2 style="font-size: 45px; font-weight: 900; color: #FFFFFF;">Where this goes next</h2>
+        <p class="s9lede">The technology is past the "is this possible" phase. The next five years are about the "is this affordable" phase.</p>
+        <div class="shelf" style="--line: #24382B"></div>
+        <ul class="s9grid">
+            <li>
+                <span class="s9num">01</span>
+                <div>
+                    <b>AI + robotics do the labour</b>
+                    <p>The newest towers are already robot-tended and AI-scheduled — planting, monitoring and harvesting with no humans in the room.</p>
+                </div>
+            </li>
+            <li>    
+                <span class="s9num">02</span>
+                <div>
+                    <b>Energy is the unlock</b>
+                    <p>Renewable power, heat recovery from HVAC into fish tanks or seed rooms, and siting farms near cheap clean grids are what will finally close the unit economics.</p>
+                </div>
+            </li>
+            <li>
+                <span class="s9num">03</span>
+                <div>
+                    <b>Buildings start to farm</b>
+                    <p>Rooftops, parking structures and office lobbies are becoming growing space — infrastructure that used to only cost now produces.</p>
+                </div>
+            </li>
+            <li>
+                <span class="s9num">04</span>
+                <div>
+                    <b>Crops beyond greens</b>
+                    <p>Mushrooms, berries and microgreens are next in line; fruiting crops and grains are the long-term frontier.</p>
+                </div>
+            </li>
+            <li style="grid-column: 1 / -1;">
+                <span class="s9num">05</span>
+                <div>
+                    <b>Policy catches up</b>
+                    <p>Singapore's "30 by 30" is the template — food-security targets that push indoor agriculture from startup experiment to national infrastructure. Countries that can't afford to import food will move fastest.</p>
+                </div>
+            </li>
+        </ul>
+   </section>
+   <section class="section10">
+    <p class="kicker" style="text-align: center;">—The bottom line</p><br>
+    <h2 style="font-size: 48px; font-weight: 900; color: #FFFFFF;">The future grows vertical.</h2>
+    <p class="s10lede">Vertical farming won't replace the field — it will feed the city while the field feeds the country. And the next decade decides how fast that shift happens.<p>
+    <a class="s10btn" href="#contact">Ask me anything about this project</a>
+   </section>
+   <section class="section11" id="contact">
+     <p class="kicker">—Contact</p><br>
+     <h2 style="font-size: 45px; font-weight: 900; color: #0C1710;">Questions, feedback, or just saying hi</h2>
+     <p class="s11lede">If you built something in this space, found an error in my figures, or want to talk about vertical farming in Indian cities — the form works.
+     </p>
+     <div class="shelf"></div>
+     <div class="s11grid">
+        <div class="s11info">
+            <p>This site is an academic project built to study how vertical farming works, where it's deployed, and what it costs. Every figure on it came from a published source — if you can spot one that's off, that's a win for this contact form.</p>
+            <div class="s11line"><span class="k">Project by</span>Pradeep Jatav · BCA 2nd Year</div>
+            <div class="s11line"><span class="k">Institution</span>Dezyne École College, Ajmer</div>
+            <div class="s11line"><span class="k">Built with</span>HTML5 · CSS3 · Vanilla JavaScript</div>
+            <div class="s11line"><span class="k">Media</span>Original photography, generated for this project</div>
+        </div>
+        <form class="s11form" onsubmit="document.getElementById('s11ok').style.display = 'block'; this.reset(); return false;">
+            <div class="s11field">
+                <label for="s11name">Your name</label>
+                <input type="text" id="s11name" name="s11name" placeholder="e.g. Radhe Gupta" required>
+            </div>
+            <div class="s11field">
+                <label for="s11email">Email</label>
+                <input type="email" id="s11email" name="s11email" placeholder="you@example.com" required>
+            </div>
+            <div class="s11field">
+                <label for="s11msg">Message</label>
+                <textarea id="s11msg" name="s11msg" rows="5" placeholder="What would you like to say?" required></textarea>
+            </div>
+            <button type="submit" class="s11btn">Send message</button>
+            <div class="s11ok" id="s11ok">✓ Message received — demo form, nothing was actually sent.</div>
+            <p class="s11fine">Front-end demo: this form stays in your browser, no data leaves this page.</p>
+        </form>
+     </div>
+   </section>
+   <footer class="footer">
+    <div class="fgrid">
+        <div class="fbrand">
+            <span  style="display: flex; align-items: center; gap: 10px;">
+        <svg width="30" height="30" viewBox="0 0 32 32" aria-hidden="true">
+            <rect x="6"  y="20" width="20" height="4.4" rx="2.2" fill="#5FA96A"/>
+            <rect x="8"  y="13" width="16" height="4.4" rx="2.2" fill="#9CCB8F"/>
+            <rect x="10" y="6"  width="12" height="4.4" rx="2.2" fill="#E9A13B"/>
+            <path d="M16 6 C 16 2.8, 18.6 1.4, 20.6 1.6 C 20.4 4.2, 18.6 6, 16 6 Z" fill="#5FA96A"/>
+        </svg>
+            <span style="font-weight:900;">
+            STACKED<br><small style="font-size: 9px; color: #9AA79B; letter-spacing: 3px;">VERTICAL FARMING REPORT</small>
+            </span>
+            </span>
+            <p style="font-size: 15px;">A single-file website on how the future of farming grows upward. Designed, written and coded as an academic project — no frameworks, no build step.</p>
+            <div class="fbadge">
+                <span>HTML5</span><span>CSS3</span><span>Vanilla JS</span><span>Inline SVG</span><span>Responsive</span><span>Real-world photos</span>
+            </div>
+        </div>
+        <div>
+            <h4>Sections</h4>
+            <ul>
+                <li><a href="#about">Overview</a></li>
+                <li><a href="#methods">Methods</a></li>
+                <li><a href="#process">Process</a></li>
+                <li><a href="#watch">Watch</a></li>
+            </ul>
+        </div>
+        <div>
+            <h4>More</h4>
+            <ul>
+                <li><a href="#world">Real World</a></li>
+                <li><a href="#honest">Honest Part</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+        </div>
+    </div>
+    <div class="fcopy">
+        <span>© 2026 <b><a href="https://github.com/pradeepjatav07-byte" target="_blank" rel="noopener">Pradeep Jatav</a></b> — BCA (2nd Year), <a href="https://www.dezyneecole.com/" target="_blank" rel="noopener">Dezyne École College</a>, Ajmer</span>
+    </div>
+   </footer>
+   <script>
+    <!-- // 1. Saare section ke direct children chuno -->
+    const revealEls = document.querySelectorAll("section > *, .section123 > *");
+
+    <!-- // 2. Har ek pe .reveal class laga do (ab wo chhupi hui hain) -->
+    revealEls.forEach(el => el.classList.add("reveal"));
+
+    <!-- // 3. Browser ka built-in "watchman" banao -->
+    const io = new IntersectionObserver(entries => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                entry.target.classList.add("in");   // 4. dikhai diya → .in → fade-in
+                io.unobserve(entry.target);          // 5. ab iska watch band (ek baar hi chalega)
+            }
+        });
+    }, { threshold: 0.15 });
+
+    <!-- // 6. Har element ko watch me daalo -->
+    revealEls.forEach(el => io.observe(el));
+        // Scroll progress bar
+    const bar = document.querySelector(".progress");
+
+    window.addEventListener("scroll", () => {
+        const total = document.documentElement.scrollHeight - window.innerHeight;
+        const done = window.scrollY;
+        bar.style.width = (done / total * 100) + "%";
+    });
+    </script>
+</body>     
+</html>  
